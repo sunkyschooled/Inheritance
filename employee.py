@@ -33,14 +33,14 @@ class OrderTaker(Employee):
         order.order_taken = True
         self.orders_taken += 1
 
-# Create SandwichMaker and CheckOutClerk classes which inherit from Employee.
+# Create SandwichMaker and Cashier classes which inherit from Employee.
 
 def main():
     orders  = [Order(n) for n in range(50)] # This line creates a list of orders
 
     joe = OrderTaker("Joe")
 
-    # Using an OrderTaker, a SandwichMaker, and a CheckOutClerk, complete all the orders. 
+    # Using an OrderTaker, a SandwichMaker, and a Cashier, complete all the orders. 
 
     
 
