@@ -35,6 +35,13 @@ class OrderTaker(Employee):
 
 # Create SandwichMaker and Cashier classes which inherit from Employee.
 
+def done(orders):
+    for order in orders:
+        if not (order.order_taken and order.sandwich_made and order.checked_out):
+            print("Order {} is not finished!".format(order.num))
+            return
+    print("All done!")
+
 def main():
     orders  = [Order(n) for n in range(50)] # This line creates a list of orders
 
@@ -42,6 +49,7 @@ def main():
 
     # Using an OrderTaker, a SandwichMaker, and a Cashier, complete all the orders. 
 
+    done(orders)
     
 
 if __name__ == "__main__":
