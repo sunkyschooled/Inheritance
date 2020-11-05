@@ -29,11 +29,28 @@ class OrderTaker(Employee):
     def __str__(self):
         return super().__str__() + "\n Orders taken: {}".format(self.orders_taken)
 
-    def check_out(self, order):
+    def order_take(self, order):
         order.order_taken = True
         self.orders_taken += 1
 
-# Create SandwichMaker and Cashier classes which inherit from Employee.
+class SandwichMaker(Employee):
+  def __init__(self, name):
+    super().__init__(name)
+    self.sandwiches_made = 0
+  def __str__(self):
+    return super().__str__() + "\n Sandwiches made: {}".format(self.sandwiches_made)
+  def sandwich_make(self, order):
+    order.sandwich_made = True
+    self.sandwiches_made += 1
+class Cashier(Employee):
+  def __init__(self, name):
+    super().__init__(name)
+    self.check_outs = 0
+  def __str__(self):
+    return super().__str__() + "\n Check outs: {}".format(self.check_outs)
+  def check_out(self, order):
+    order.checked_out = True
+    self.check_outs += 1
 
 def done(orders):
     for order in orders:
@@ -47,10 +64,16 @@ def main():
 
     joe = OrderTaker("Joe")
 
-    # Using an OrderTaker, a SandwichMaker, and a Cashier, complete all the orders. 
+    bob = SandwichMaker("Bob")
 
+    mike = Cashier("Mike")
+
+    for order in orders:
+      joe.order_take(order)
+      bob.sandwich_make(order)
+      mike.check_out(order)
     done(orders)
     
 
 if __name__ == "__main__":
-    main()
+   main()
